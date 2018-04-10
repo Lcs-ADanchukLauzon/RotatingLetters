@@ -8,39 +8,42 @@
 
 import Foundation
 
-// Get the user input
-var rawInput = readLine()
-
-// Makes sure that the input is a String and not an Int or nil
-guard let input : String = rawInput else{
-   print("NO")
-    exit(9)
+var validInput = ""
+while 1 == 1 {
+  
+    // Makes sure that the input is a String and not an Int or nil
+    guard let input : String = readLine() else{
+        continue
+    }
+   
+    // Checks to see if the input is in upper case
+    let upperInput = input.uppercased()
+    if input != upperInput {
+        continue
+    }
+    
+    // Check for spaces
+    if input.contains(" ") {
+       continue
+    }
+    
+    // Checks to see if the length of the input is acceptable
+    if input.count > 30 || input.count < 1 {
+        continue
+    }
+    
+    // if code this code is run then input is valid for processing
+    validInput = input
+    break // ends loop
 }
 
 
-// Checks to see if the input is in upper case
-var upperInput = input.uppercased()
-if input != upperInput {
-    print("NO")
-    exit(9)
-}
 
-if input.contains(" ") {
-    print("NO")
-    exit(9)
-}
-
-
-// Checks to see if the length of the input is acceptable
-if input.count > 30 || input.count < 1 {
-    print("NO")
-    exit(9)
-}
 
 // creating a variable to compare the number of acceptable letters to the length of the input to determine is they match.
 var goodCharacterNumber = 0
 
-for individualCharacters in input {
+for individualCharacters in validInput {
     
     
     switch individualCharacters {
@@ -53,7 +56,7 @@ for individualCharacters in input {
 }
 
 // If they match than they are good if not program ends
-if input.count == goodCharacterNumber {
+if validInput.count == goodCharacterNumber {
     print("YES")
 } else {
     print("NO")
