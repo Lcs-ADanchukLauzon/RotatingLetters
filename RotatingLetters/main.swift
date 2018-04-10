@@ -25,9 +25,14 @@ if input != upperInput {
     exit(9)
 }
 
+if input.contains(" ") {
+    print("NO")
+    exit(9)
+}
+
 
 // Checks to see if the length of the input is acceptable
-if input.characters.count > 30 || input.characters.count < 1 {
+if input.count > 30 || input.count < 1 {
     print("NO")
     exit(9)
 }
@@ -41,16 +46,14 @@ for individualCharacters in input {
     switch individualCharacters {
     case "I", "O", "S", "H", "Z", "X", "N" :
         goodCharacterNumber += 1
-    case " " :
+    default:
         break
-    
-    default: break
     }
     
 }
 
 // If they match than they are good if not program ends
-if input.characters.count == goodCharacterNumber {
+if input.count == goodCharacterNumber {
     print("YES")
 } else {
     print("NO")
