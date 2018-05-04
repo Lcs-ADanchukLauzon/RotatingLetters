@@ -32,6 +32,20 @@ while 1 == 1 {
         continue
     }
     
+    var yes = 0
+    for characters in input {
+        
+        switch characters {
+        case "1", "2", "3", "4", "5", "6", "7", "8", "9", "0" :
+            yes += 1
+        default:
+            break
+        }
+    }
+    if yes > 0 {
+        continue
+    }
+    
     // if code this code is run then input is valid for processing
     validInput = input
     break // ends loop
